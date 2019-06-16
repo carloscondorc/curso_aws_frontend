@@ -36,9 +36,9 @@
       </button>
       <mat-divider></mat-divider>
 
-      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/app/problema" style="cursor: pointer">
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/app/encuesta" style="cursor: pointer">
         <mat-icon>add_alert</mat-icon>
-        <span>FeedBack</span>
+        <span>Encuesta</span>
       </button>
 
       <mat-accordion *ngIf="isAdmin">
@@ -50,17 +50,13 @@
           </mat-expansion-panel-header>
 
           <button mat-menu-item (click)="sidenav.toggle()" routerLink="/app/admin/tiponegocio" style="cursor: pointer">
-            <span>Tipo Negocio</span>
+            <span>Curso</span>
           </button>
           <mat-divider></mat-divider>
           <button mat-menu-item (click)="sidenav.toggle()" routerLink="/app/admin/negocio" style="cursor: pointer">
             <span>Negocio</span>
           </button>
-          <mat-divider></mat-divider>
-          <button mat-menu-item (click)="sidenav.toggle()" routerLink="/app/admin/sedes" style="cursor: pointer">
-            <span>Sedes</span>
-          </button>
-
+   
         </mat-expansion-panel>
       </mat-accordion>
     </mat-sidenav>

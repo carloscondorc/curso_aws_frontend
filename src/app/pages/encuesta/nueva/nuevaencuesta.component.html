@@ -1,0 +1,30 @@
+<div class="example-container">
+  <h2 mat-dialog-title>Formulario de Encuesta</h2>
+  <mat-dialog-content>
+    <form #myform="ngForm" class="example-form" (ngSubmit)="onSubmit()">
+      
+      <mat-form-field class="example-full-width">
+        <textarea matInput name="Encuesta.nombres" placeholder="Nombres" [(ngModel)]="Encuesta.nombres" required></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <textarea matInput name="Encuesta.apellidos" placeholder="Apellidos" [(ngModel)]="Encuesta.apellidos" required></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <textarea matInput name="Encuesta.edad" placeholder="Edad" [(ngModel)]="Encuesta.edad" required></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder="Curso" 
+        name="encuesta.curso" [(ngModel)]="encuesta.curso" required>
+          <mat-option *ngFor="let curs of cursos" [value]="curs">
+            {{curso.curso}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button type="submit" mat-fab color="primary" [disabled]="myform.invalid">Enviar</button>
+    </form>
+  </mat-dialog-content>
+</div>

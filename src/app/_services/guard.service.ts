@@ -17,13 +17,11 @@ export class GuardService implements CanActivate {
     let isAdministrador = this.securityService.esRoleAdmin();
 
     if (token != null) {
-      
+
       if(!isAdministrador){
         switch (state.url) {
-          case '/admin/tiponegocio':
-          case '/admin/negocio':
-          case '/admin/sedes': 
-            this.router.navigate(['mapa']);  
+          case '/admin/curso':
+             this.router.navigate(['mapa']);
             return false;
         }
       }

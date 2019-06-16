@@ -6,21 +6,15 @@ import { MaterialModule } from './material/material.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MapaComponent } from './pages/mapa/mapa.component';
 import { AboutComponent } from './pages/about/about.component';
-import { ProblemaComponent } from './pages/problema/problema.component';
-import { DetalleComponent } from './pages/mapa/detalle/detalle.component';
-import { NuevoComponent } from './pages/problema/nuevo/nuevo.component';
+import { EncuestaComponent } from './pages/encuesta/encuesta.component';
+import { NuevaEncuestaComponent } from './pages/encuesta/nueva/nuevaencuesta.component';
 import { SecurityComponent } from './pages/security/security.component';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { TokenInterceptorService } from './_services/token-interceptor.service';
-import { TiponegocioComponent } from './pages/admin/tiponegocio/tiponegocio.component';
-import { NegocioComponent } from './pages/admin/negocio/negocio.component';
-import { SedesComponent } from './pages/admin/sedes/sedes.component';
+import { CursoComponent } from './pages/admin/curso/cursos.component';
+import { NuevoCursoComponent } from './pages/admin/curso/nuevocurso/nuevocurso.component';
 import { AdminComponent } from './pages/admin/admin/admin.component';
-import { NuevoTipoNegocioComponent } from './pages/admin/tiponegocio/nuevo/nuevo.component';
-import { NuevonegocioComponent } from './pages/admin/negocio/nuevonegocio/nuevonegocio.component';
-import { NuevasedeComponent } from './pages/admin/sedes/nuevasede/nuevasede.component';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BodyComponent } from './pages/body/body.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -29,20 +23,14 @@ import { ErrorComponent } from './pages/login/error/error.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MapaComponent,
     AboutComponent,
-    ProblemaComponent,
-    DetalleComponent,
-    NuevoComponent,
+    EncuestaComponent,
+    NuevaEncuestaComponent,
     SecurityComponent,
     LogoutComponent,
-    TiponegocioComponent,
-    NegocioComponent,
-    SedesComponent,
+    CursoComponent,
+    NuevoCursoComponent,
     AdminComponent,
-    NuevoTipoNegocioComponent,
-    NuevonegocioComponent,
-    NuevasedeComponent,
     BodyComponent,
     LoginComponent,
     ErrorComponent
@@ -67,11 +55,8 @@ import { ErrorComponent } from './pages/login/error/error.component';
     { provide: LocationStrategy, useClass: PathLocationStrategy }],
   bootstrap: [AppComponent],
   entryComponents: [
-    DetalleComponent, 
-    NuevoComponent, 
-    NuevoTipoNegocioComponent, 
-    NuevonegocioComponent,
-    NuevasedeComponent,
+    NuevaEncuestaComponent, 
+    NuevoCursoComponent,
     ErrorComponent]
 })
 export class AppModule { }

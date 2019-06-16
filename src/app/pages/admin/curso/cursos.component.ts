@@ -1,34 +1,34 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Local } from '../../../_model/Local';
+import { Curso } from '../../../_model/Curso';
 import { MatTableDataSource, MatPaginator, MatDialog, MatSnackBar } from '@angular/material';
-import { SedeService } from '../../../_services/sede.service';
-import { NuevasedeComponent } from './nuevasede/nuevasede.component';
+import { CursoService } from '../../../_services/curso.service';
+import { NuevoCursoComponent } from './nuevocurso/nuevocurso.component';
 
 @Component({
-  selector: 'app-sedes',
-  templateUrl: './sedes.component.html',
-  styleUrls: ['./sedes.component.css']
+  selector: 'app-cursos',
+  templateUrl: './cursos.component.html',
+  styleUrls: ['./cursos.component.css']
 })
-export class SedesComponent implements OnInit {
+export class CursoComponent implements OnInit {
 
-  dataSource:MatTableDataSource<Local>;
+  dataSource:MatTableDataSource<Curso>;
   totalElementos: number = 0;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  displayedColumns: string[] = ['id', 'negocio', 'local', 'coordenadas', 'acciones'];
+  displayedColumns: string[] = ['id', 'curso'];
 
   constructor(
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private sedeService: SedeService
+    private cursoService: CursoService
   ) {
-    this.dataSource = new MatTableDataSource<Local>();
+    this.dataSource = new MatTableDataSource<Curso>();
    }
 
   ngOnInit() {
     this.cargarTabla(0, 100, false);
 
-    this.sedeService.mensajeRegistro.subscribe((dato) => {
+    this.cursoService.mensajeRegistro.subscribe((dato) => {
       this.dialog.closeAll();
       this.snackBar.open(dato, null, {
         duration: 1500,
@@ -46,9 +46,9 @@ export class SedesComponent implements OnInit {
   }
 
   cargarTabla(pageIndex: number, pageSize: number, desdePaginador: boolean){
-    this.sedeService.obtenerRegistros(pageIndex, pageSize).subscribe((datos) => {
+    this.cursoService.obtenerRegistros(pageIndex, pageSize).subscribe((datos) => {
       let registros = JSON.parse(JSON.stringify(datos)).content;
-      this.dataSource = new MatTableDataSource<Local>(registros);
+      this.dataSource = new MatTableDataSource<Curso>(registros);
       this.totalElementos = JSON.parse(JSON.stringify(datos)).totalElements;
       if(!desdePaginador){
         this.dataSource.paginator = this.paginator;
@@ -56,14 +56,14 @@ export class SedesComponent implements OnInit {
     });
   }
 
-  eliminarLocal(id: number) {
-    this.sedeService.eliminarLocal(id).subscribe((data) => {
-      this.sedeService.mensajeRegistro.next('Dato eliminado correctamente...');
+  eliminarCurso(id: number) {
+    this.cursoService.eliminarCurso(id).subscribe((data) => {
+      this.cursoService.mensajeRegistro.next('Dato eliminado correctamente...');
     });
   }
 
-  actualizarLocal(sede: Local) {
-    this.dialog.open(NuevasedeComponent, {
+  actualizarCurso(sede: Curso) {
+    this.dialog.open(NuevoCursoComponent, {
       width: '80%',
       height: '80%',
       data: { sede: sede }
@@ -71,7 +71,7 @@ export class SedesComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(NuevasedeComponent, {
+    this.dialog.open(NuevoCursoComponent, {
       width: '80%',
       height: '80%'
     });

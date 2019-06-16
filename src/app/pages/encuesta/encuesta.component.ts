@@ -1,33 +1,33 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog, MatSnackBar } from '@angular/material';
-import { ProblemaService } from '../../_services/problema.service';
-import { FeedBack } from '../../_model/Feedback';
-import { NuevoComponent } from './nuevo/nuevo.component';
+import { NuevaEncuestaComponent } from './nueva/nuevaencuesta.component';
+import { Encuesta } from 'src/app/_model/encuesta';
+import { EncuestaService } from 'src/app/_services/encuesta.service';
 
 @Component({
-  selector: 'app-problema',
-  templateUrl: './problema.component.html',
-  styleUrls: ['./problema.component.css']
+  selector: 'app-encuesta',
+  templateUrl: './encuesta.component.html',
+  styleUrls: ['./encuesta.component.css']
 })
-export class ProblemaComponent implements OnInit {
+export class EncuestaComponent implements OnInit {
 
-  dataSource:MatTableDataSource<FeedBack>;
+  dataSource:MatTableDataSource<Encuesta>;
   totalElementos: number = 0;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  displayedColumns: string[] = ['id', 'tema', 'mensaje', 'fecha', 'acciones'];
+  displayedColumns: string[] = ['id', 'nombres', 'apellidos', 'eleccion', 'acciones'];
 
   constructor(
-    private dialog: MatDialog, 
-    private serviceProblema: ProblemaService,
+    private dialog: MatDialog,
+    private serviceEncuesta: EncuestaService,
     private snackBar: MatSnackBar) {
-    this.dataSource = new MatTableDataSource<FeedBack>();
+    this.dataSource = new MatTableDataSource<Encuesta>();
   }
 
   ngOnInit() {
     this.cargarTabla(0, 100, false);
 
-    this.serviceProblema.mensajeRegistro.subscribe((dato) => {
+    this.serviceEncuesta.mensajeRegistro.subscribe((dato) => {
       this.dialog.closeAll();
       this.snackBar.open(dato, null, {
         duration: 1500,
@@ -45,9 +45,9 @@ export class ProblemaComponent implements OnInit {
   }
 
   cargarTabla(pageIndex: number, pageSize: number, desdePaginador: boolean){
-    this.serviceProblema.obtenerFeedBacksPropios(pageIndex, pageSize).subscribe((datos) => {
+    this.serviceEncuesta.obtenerEncuestasPropias(pageIndex, pageSize).subscribe((datos) => {
       let feedbacks = JSON.parse(JSON.stringify(datos)).content;
-      this.dataSource = new MatTableDataSource<FeedBack>(feedbacks);
+      this.dataSource = new MatTableDataSource<Encuesta>(feedbacks);
       this.totalElementos = JSON.parse(JSON.stringify(datos)).totalElements;
       if(!desdePaginador){
         this.dataSource.paginator = this.paginator;
@@ -55,14 +55,14 @@ export class ProblemaComponent implements OnInit {
     });
   }
 
-  eliminarFeedBack(id: number) {
-    this.serviceProblema.eliminarFeedBack(id).subscribe((data) => {
-      this.serviceProblema.mensajeRegistro.next('Dato eliminado correctamente...');
+  eliminarEncuesta(id: number) {
+    this.serviceEncuesta.eliminarEncuesta(id).subscribe((data) => {
+      this.serviceEncuesta.mensajeRegistro.next('Dato eliminado correctamente...');
     });
   }
 
   openDialog() {
-    this.dialog.open(NuevoComponent, {
+    this.dialog.open(NuevaEncuestaComponent, {
       width: '80%',
       height: '80%'
     });

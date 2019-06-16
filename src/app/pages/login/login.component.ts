@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
 
         this.securityService.validarToken().subscribe((dato: any)=>{
           sessionStorage.setItem(PARAM_USUARIO, JSON.stringify(dato.body));
-          this.router.navigate(["app/mapa"]);
+          console.log("ingresa a app/encuesta");
+          this.router.navigate(["app/encuesta"]);
         });
       }else{
         this.dialog.open(ErrorComponent, {
