@@ -32,7 +32,8 @@ export class EncuestaComponent implements OnInit {
       this.snackBar.open(dato, null, {
         duration: 1500,
       });
-      this.cargarTabla(0, 100, false);
+      this.cargarTabla2();
+      //this.cargarTabla(0, 100, false);
     });
   }
 
@@ -46,13 +47,21 @@ export class EncuestaComponent implements OnInit {
 
   cargarTabla(pageIndex: number, pageSize: number, desdePaginador: boolean){
     this.serviceEncuesta.obtenerEncuestasPropias(pageIndex, pageSize).subscribe((datos) => {
-      let feedbacks = JSON.parse(JSON.stringify(datos)).content;
-      this.dataSource = new MatTableDataSource<Encuesta>(feedbacks);
+      let encuestas = JSON.parse(JSON.stringify(datos)).content;
+      this.dataSource = new MatTableDataSource<Encuesta>(encuestas);
       this.totalElementos = JSON.parse(JSON.stringify(datos)).totalElements;
       if(!desdePaginador){
         this.dataSource.paginator = this.paginator;
       }
     });
+  }
+
+  cargarTabla2(){
+    this.serviceEncuesta.obtenerCatalogoEncuestas().subscribe((datos) => {
+      let encuestas = JSON.parse(JSON.stringify(datos)).content;
+      this.dataSource = new MatTableDataSource<Encuesta>(encuestas);
+      this.totalElementos = JSON.parse(JSON.stringify(datos)).totalElements;
+       });
   }
 
   eliminarEncuesta(id: number) {
