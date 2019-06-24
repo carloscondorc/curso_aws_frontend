@@ -16,7 +16,7 @@ export class CursoService {
   constructor(private httpClient: HttpClient) { }
 
   obtenerCatalogoCursos() {
-    return this.httpClient.get<Curso[]>(`${this.urlCurso}/curso/listar`);
+    return this.httpClient.get<Curso[]>(`${this.urlCurso}/listar`);
   }
 
   guardarCurso(curso: Curso) {

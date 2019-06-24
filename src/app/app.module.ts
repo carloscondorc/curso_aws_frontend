@@ -13,12 +13,14 @@ import { SecurityComponent } from './pages/security/security.component';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { TokenInterceptorService } from './_services/token-interceptor.service';
 import { CursoComponent } from './pages/admin/curso/cursos.component';
+import { PersonaComponent } from './pages/admin/persona/personas.component';
 import { NuevoCursoComponent } from './pages/admin/curso/nuevocurso/nuevocurso.component';
 import { AdminComponent } from './pages/admin/admin/admin.component';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BodyComponent } from './pages/body/body.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ErrorComponent } from './pages/login/error/error.component';
+import { NuevaPersonaComponent } from './pages/admin/persona/nuevapersona/nuevapersona.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { ErrorComponent } from './pages/login/error/error.component';
     LogoutComponent,
     CursoComponent,
     NuevoCursoComponent,
+    PersonaComponent,
+    NuevaPersonaComponent,
     AdminComponent,
     BodyComponent,
     LoginComponent,
@@ -57,6 +61,7 @@ import { ErrorComponent } from './pages/login/error/error.component';
   entryComponents: [
     NuevaEncuestaComponent, 
     NuevoCursoComponent,
+    NuevaPersonaComponent,
     ErrorComponent]
 })
 export class AppModule { }

@@ -1,8 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { EncuestaService } from '../../../_services/encuesta.service';
-import { CursoService} from '../../../_services/curso.service';
+import { CursoService }  from '../../../_services/curso.service';
 import { Encuesta } from '../../../_model/Encuesta';
-import { Curso } from '../../../_model/Curso'
+
+import { MAT_DIALOG_DATA } from '@angular/material';
+import { Curso } from 'src/app/_model/Curso';
 
 
 @Component({
@@ -10,31 +12,34 @@ import { Curso } from '../../../_model/Curso'
   templateUrl: './nuevaencuesta.component.html',
   styleUrls: ['./nuevaencuesta.component.css']
 })
-export class NuevaEncuestaComponent implements OnInit {
+export class NuevaEncuestaComponent implements OnInit  {
 
-  encuestas: Encuesta[] = [];
-  cursos: Curso[] = [];
-  texto: string = '';
   encuesta: Encuesta;
-
+  cursos: Curso[] = [];
+  curso: Curso;
+  texto: string = '';
+  
   constructor(
-    private serviceEncuesta: EncuestaService, private serviceCurso: CursoService) {
+    private serviceEncuesta: EncuestaService,
+    private serviceCurso: CursoService)
+     {
     this.encuesta = new Encuesta();
+    this.curso = new Curso();
+   
   }
 
   ngOnInit() {
-    this.serviceEncuesta.obtenerCatalogoEncuestas().subscribe((data) => {
-      this.encuestas = data;
-    });
 
     this.serviceCurso.obtenerCatalogoCursos().subscribe((data) => {
       this.cursos = data;
     });
+
   }
 
+
   onSubmit() {
-    //this.encuesta.fecha = new Date();
-    this.serviceEncuesta.guardarEncuesta(this.encuesta).subscribe((data)=>{
+    //this.feedback.fecha = new Date();
+       this.serviceEncuesta.guardarEncuesta(this.encuesta).subscribe((data)=>{
         this.serviceEncuesta.mensajeRegistro.next('Registrado Correctamente...');
     }, (error) => {
       this.serviceEncuesta.mensajeRegistro.next('Error al guardar el feedback...');

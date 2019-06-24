@@ -1,10 +1,7 @@
 import { Curso } from './Curso';
+import { Persona } from './Persona'
 export class Encuesta {
     id: number;
-    nombres: string;
-    apellidos: string;
-    edad: number;
-    profesion: string;
-    lugar_trabajo: string;
+    persona: Persona;
     curso:Curso;
 }

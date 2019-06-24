@@ -5,7 +5,7 @@
       <mat-icon *ngIf="sidenav.opened">close</mat-icon>
     </button>
 
-    <h1>GeoServicios</h1>
+    <h1>Encuestas</h1>
 
     <span class="example-spacer"></span>
 
@@ -30,7 +30,7 @@
       <img src="assets/mitocode.jpg" width="200">
       <mat-divider></mat-divider>
 
-      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/app/mapa" style="cursor: pointer">
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/app/encuesta" style="cursor: pointer">
         <mat-icon>location_on</mat-icon>
         <span>Buscar</span>
       </button>
@@ -49,12 +49,12 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
 
-          <button mat-menu-item (click)="sidenav.toggle()" routerLink="/app/admin/tiponegocio" style="cursor: pointer">
+          <button mat-menu-item (click)="sidenav.toggle()" routerLink="/app/admin/curso" style="cursor: pointer">
             <span>Curso</span>
           </button>
           <mat-divider></mat-divider>
-          <button mat-menu-item (click)="sidenav.toggle()" routerLink="/app/admin/negocio" style="cursor: pointer">
-            <span>Negocio</span>
+          <button mat-menu-item (click)="sidenav.toggle()" routerLink="/app/admin/persona" style="cursor: pointer">
+            <span>Persona</span>
           </button>
    
         </mat-expansion-panel>

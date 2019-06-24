@@ -15,7 +15,7 @@ export class EncuestaComponent implements OnInit {
   totalElementos: number = 0;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  displayedColumns: string[] = ['id', 'nombres', 'apellidos', 'eleccion', 'acciones'];
+  displayedColumns: string[] = ['id', 'nombres', 'apellidos','edad','eleccion', 'acciones'];
 
   constructor(
     private dialog: MatDialog,
@@ -32,8 +32,8 @@ export class EncuestaComponent implements OnInit {
       this.snackBar.open(dato, null, {
         duration: 1500,
       });
-      this.cargarTabla2();
-      //this.cargarTabla(0, 100, false);
+      //this.cargarTabla2();
+      this.cargarTabla(0, 100, false);
     });
   }
 
@@ -72,8 +72,8 @@ export class EncuestaComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(NuevaEncuestaComponent, {
-      width: '80%',
-      height: '80%'
+      width: '90%',
+      height: '90%'
     });
   }
 

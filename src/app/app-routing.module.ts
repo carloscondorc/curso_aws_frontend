@@ -6,6 +6,7 @@ import { SecurityComponent } from './pages/security/security.component';
 import { GuardService } from './_services/guard.service';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { CursoComponent } from './pages/admin/curso/cursos.component';
+import { PersonaComponent } from './pages/admin/persona/personas.component';
 import { AdminComponent } from './pages/admin/admin/admin.component';
 import { BodyComponent } from './pages/body/body.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'encuesta', component: EncuestaComponent},
   {path: 'admin', component: AdminComponent, children: [
-  {path: 'curso', component: CursoComponent}
+  {path: 'curso', component: CursoComponent},
+  {path: 'persona', component: PersonaComponent}
    ]},
   ], canActivate: [GuardService]},
   {path: '**', redirectTo: 'login', pathMatch: 'full'}

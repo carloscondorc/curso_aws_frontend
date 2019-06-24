@@ -2,28 +2,39 @@
   <h2 mat-dialog-title>Formulario de Encuesta</h2>
   <mat-dialog-content>
     <form #myform="ngForm" class="example-form" (ngSubmit)="onSubmit()">
-      
       <mat-form-field class="example-full-width">
-        <textarea matInput name="Encuesta.nombres" placeholder="Nombres" [(ngModel)]="Encuesta.nombres" required></textarea>
+        <input matInput placeholder="id" name="encuesta.id" [(ngModel)]="encuesta.id" readonly />
+      </mat-form-field>
+    
+
+      <mat-form-field class="example-full-width">
+        <textarea matInput name="persona.nombres" placeholder="Nombres" [(ngModel)]="persona.nombres" required></textarea>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <textarea matInput name="Encuesta.apellidos" placeholder="Apellidos" [(ngModel)]="Encuesta.apellidos" required></textarea>
+        <textarea matInput name="persona.apellidos" placeholder="Apellidos" [(ngModel)]="persona.apellidos" required></textarea>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <textarea matInput name="Encuesta.edad" placeholder="Edad" [(ngModel)]="Encuesta.edad" required></textarea>
+        <textarea matInput name="persona.edad" maxlength="2" placeholder="Edad" [(ngModel)]="persona.edad"  required></textarea>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <mat-select placeholder="Curso" 
-        name="encuesta.curso" [(ngModel)]="encuesta.curso" required>
-          <mat-option *ngFor="let curs of cursos" [value]="curs">
-            {{curso.curso}}
-          </mat-option>
-        </mat-select>
+        <textarea matInput name="persona.profesion" placeholder="Profesion"  [(ngModel)]="persona.profesion" required></textarea>
       </mat-form-field>
 
+      <mat-form-field class="example-full-width">
+        <textarea matInput  name="persona.lugar_trabajo" placeholder="Lugar Trabajo" [(ngModel)]="persona.lugar_trabajo" required></textarea>
+      </mat-form-field>
+
+      <mat-radio-group class = "tp-radio-group" [(ngModel)] = "curso">
+        <mat-radio-button class = "tp-radio-button"
+           *ngFor = "let curs of cursos" [value] = "curso.id">
+           {{curs.curso}}
+        </mat-radio-button>
+     </mat-radio-group>
+
+     <br>
       <button type="submit" mat-fab color="primary" [disabled]="myform.invalid">Enviar</button>
     </form>
   </mat-dialog-content>
