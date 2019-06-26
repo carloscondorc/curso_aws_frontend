@@ -2,8 +2,6 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { EncuestaService } from '../../../_services/encuesta.service';
 import { CursoService }  from '../../../_services/curso.service';
 import { Encuesta } from '../../../_model/Encuesta';
-
-import { MAT_DIALOG_DATA } from '@angular/material';
 import { Curso } from 'src/app/_model/Curso';
 
 
@@ -24,7 +22,7 @@ export class NuevaEncuestaComponent implements OnInit  {
     private serviceCurso: CursoService)
      {
     this.encuesta = new Encuesta();
-    this.curso = new Curso();
+   // this.curso = new Curso();
    
   }
 
