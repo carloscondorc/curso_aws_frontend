@@ -1,45 +1,49 @@
 <div class="example-container">
   <h2 mat-dialog-title>Formulario de Encuesta</h2>
   <mat-dialog-content>
-    <form #myform="ngForm" class="example-form" (ngSubmit)="onSubmit()">
+    <form #myform="ngForm" class="example-form" >
 
-   
+  
       <mat-form-field class="example-full-width">
-        <textarea matInput name="encuesta.persona.nombres" placeholder="Nombres" [(ngModel)]="encuesta.persona.nombres" [ngModelOptions]="{standalone: true}" required></textarea>
-      </mat-form-field>
- 
-      <mat-form-field class="example-full-width">
-        <textarea matInput name="encuesta.persona.apellidos" placeholder="Apellidos" [(ngModel)]="encuesta.persona.apellidos" [ngModelOptions]="{standalone: true}" required></textarea>
+        <textarea matInput name="encuesta.persona.nombres" placeholder="Nombres" [(ngModel)]="encuesta.persona.nombres"required></textarea>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <textarea matInput name="encuesta.persona.edad" maxlength="2" placeholder="Edad" [(ngModel)]="encuesta.persona.edad" [ngModelOptions]="{standalone: true}"  required></textarea>
+        <textarea matInput name="encuesta.persona.apellidos" placeholder="Apellidos"
+          [(ngModel)]="encuesta.persona.apellidos" required></textarea>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <textarea matInput name="encuesta.persona.profesion" placeholder="Profesion"  [(ngModel)]="encuesta.persona.profesion" [ngModelOptions]="{standalone: true}" required></textarea>
+        <textarea matInput name="encuesta.persona.edad" maxlength="2" placeholder="Edad"
+          [(ngModel)]="encuesta.persona.edad" required></textarea>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <textarea matInput  name="encuesta.persona.lugar_trabajo" placeholder="Lugar Trabajo" [(ngModel)]="encuesta.persona.lugar_trabajo" [ngModelOptions]="{standalone: true}" required></textarea>
+        <textarea matInput name="encuesta.persona.profesion"  [(ngModel)]="encuesta.persona.profesion"placeholder="Profesion" required></textarea>
       </mat-form-field>
-    <!--
+
+      <mat-form-field class="example-full-width">
+        <textarea matInput name="encuesta.persona.lugar_trabajo" placeholder="Lugar Trabajo"
+          [(ngModel)]="encuesta.persona.lugar_trabajo"  required></textarea>
+      </mat-form-field>
+     <!--
       <mat-radio-group class = "tp-radio-group"  [(ngModel)] = "encuesta.curso.id" required>
-        <mat-radio-button class = "tp-radio-button" *ngFor = "let curs of cursos" [value] = "curs.id">
-          {{curs.id }} {{curs.nombre}}
+        <mat-radio-button class = "tp-radio-button" *ngFor = "let curs of cursos" value= "curs.id">
+         {{curs.nombre}}
         </mat-radio-button>
      </mat-radio-group>
-    -->
-     <mat-radio-group [(ngModel)]="encuesta.curso.id" #radioGroup="matRadioGroup">
-      <mat-radio-button [value]="1">Java</mat-radio-button>
-      <mat-radio-button [value]="2">C#</mat-radio-button>
-        </mat-radio-group>
-
-     <div>radio group ngModel: {{ encuesta.curso.id }}</div>
-     <div>radio group value: {{ radioGroup.value }}</div>
-
-     <br>
-      <button type="submit" mat-fab color="primary" [disabled]="myform.invalid">Enviar</button>
+     (ngSubmit)="onSubmit()
+     --->
+      
     </form>
+
+    <mat-radio-group class="tp-radio-group" [(ngModel)]="encuesta.curso.id" #radioGroup="matRadioGroup">
+      <mat-radio-button value="1">Java</mat-radio-button>
+      <mat-radio-button value="2">C#</mat-radio-button>
+    </mat-radio-group> 
+    <br/>
+    <button type="submit" mat-fab color="primary" [disabled]="myform.invalid" (click)="onSubmit()" >Enviar</button>
   </mat-dialog-content>
+
+  
 </div>

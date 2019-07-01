@@ -14,12 +14,14 @@ export class NuevaEncuestaComponent implements OnInit  {
 
   encuesta: Encuesta;
   cursos: Curso[] = [];
-  curso: Curso;
+ // curso: Curso;
   texto: string = '';
+
   
   constructor(
     private serviceEncuesta: EncuestaService,
     private serviceCurso: CursoService)
+
      {
     this.encuesta = new Encuesta();
    // this.curso = new Curso();

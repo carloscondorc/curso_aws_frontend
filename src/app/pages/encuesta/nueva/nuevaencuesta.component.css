@@ -16,3 +16,14 @@
   .mat-radio-button ~ .mat-radio-button {
     margin-left: 16px;
   }
+
+  .tp-radio-group {
+    display: inline-flex;
+    flex-direction: row;
+ }
+ .tp-radio-button {
+    margin: 5px;
+ }
+ .tp-selected-value {
+    margin: 15px 0;
+ }
