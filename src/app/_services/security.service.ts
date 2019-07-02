@@ -13,7 +13,7 @@ import { BasicAccess } from '../_model/BasicAccess';
 export class SecurityService {
 
 
-  urlOauth: string = `${HOST_BACKEND}/ng build `;
+  urlOauth: string = `${HOST_BACKEND}/api/security/token`;
   urlLogin: string = `${HOST_BACKEND}/api/security/login`;
   urlRenewPassword: string = `${HOST_BACKEND}/api/security/first-reset-password`;
   urlUpdatePassword: string = `${HOST_BACKEND}/api/security/change-password`;
